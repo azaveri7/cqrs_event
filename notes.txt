@@ -1,0 +1,47 @@
+#1. Create Docker Network - techbankNet 
+
+docker network create --attachable -d bridge techbankNet
+
+#2. To verify network created successfully.
+
+docker network ls
+
+#3. To verify docker-compose created successfully.
+
+docker-compose --version
+
+#4. bring up docker images of kafka and zookeeper
+
+docker-compose up -d
+
+
+#5. Bring up Mongo db container
+
+docker run -it -d --name mongo-container -p 27017:27017 --network techbankNet \
+--restart always -v mongodb_data_container:/data/db mongo:latest
+
+#6. Install Robo 3T Mongo UI to view mongo data
+
+Open Robo -> Create -> Connection settings
+
+Type: Direct Connection
+Name: Mongo_In_Docker_Local
+Address: localhost
+Port: 27017
+
+#7. MySQL docker image
+
+docker run -it -d --name mysql-container -p 3306:3306 --network techbankNet \
+-e MYSQL_ROOT_PASSWORD=techbankRootPsw \
+--restart always -v mysql_data_container:/var/lib/mysql mysql:latest
+
+#8. Install tools in Docker - Adminer
+
+docker run -it -d --name adminer -p 8080:8080 --network techbankNet \
+-e ADMINER_DEFAULT_SERVER=mysql-container \
+--restart always adminer:latest
+
+#9 Open Adminer at localhost:8080
+   user: root
+   password: techbankRootPsw
+
