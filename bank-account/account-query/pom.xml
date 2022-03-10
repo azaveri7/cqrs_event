@@ -12,7 +12,7 @@
 	<artifactId>account-query</artifactId>
 	<version>1.0.0</version>
 	<name>account-query</name>
-	<description>Bank Account Query API Project</description>
+	<description>Bank Account Query API Project </description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>

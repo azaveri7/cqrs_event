@@ -1,9 +1,9 @@
-package com.techbank.accountcmd.api.commands;
+package com.techbank.account.cmd.api.commands;
 
 import com.techbank.cqrscore.commands.BaseCommand;
 import lombok.Data;
 
 @Data
-public class DepositFundsCommand extends BaseCommand {
+public class WithdrawFundsCommand extends BaseCommand {
     private double amount;
 }
